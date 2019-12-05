@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">One Advise (A Openness Website)</h1>
+<h1 align="center">One Advise (A Openness Website)</h1>
 
 English | [简体中文](./README-zh_CN.md)
 
