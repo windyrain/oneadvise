@@ -1,63 +1,85 @@
 /**
- * [rain description]
- * @param  {[Element]} canvas canvas元素对象
- * @param  {[String]} text    掉落的字符串
- * @param  {[String]} symbol  分隔符
- * @param  {[Number]} speed   掉落速度
- * @return {[type]}        [description]
+ * rain (From The Matrix 黑客帝国)
+ * @author fengyu
  */
-function rain(canvas, text, symbol, speed) {
-    //获取屏幕可视区域大小
-    var d = document.documentElement;
-    var clinetW = d.clientWidth;
-    var clinetH = d.clientHeight;
+// Prosperity, democracy, civilization, harmony, freedom, equality, justice, rule of law, patriotism, dedication, integrity and friendship
+// this is socialist core values in china
+const rainStr = '富强 民主 文明 和谐 自由 平等 公正 法治 爱国 敬业 诚信 友善';
 
-    //设置画布大小
-    var canvas = canvas || document.querySelector('canvas');
-    canvas.width = clinetW;
-    canvas.height = clinetH;
+class rain {
 
-    var cxt = canvas.getContext('2d');
-    var rainStr = text || 'The matrix of hackers';
-    var symbol = symbol || '';
-    var arr = rainStr.split(symbol);
-
-    var fontSize = 14;
-    // 计算行数
-    var cols = Math.floor(clinetW / fontSize);
-    // 初始化Y轴坐标
-    var down = [];
-    for (var i = 0; i < cols; i++) {
-        down.push(Math.floor(Math.random() * -100));
+    constructor(config) {
+        const { container, rainStr, fontSize, speed } = config;
+        this.container = container;
+        this.rainStr = rainStr;
+        this.fontSize = fontSize;
+        this.speed = speed;
+        this.docEl = document.documentElement;
     }
 
-    function drawRain() {
-        // 填充背景(ps:背景采用rgba,可尝试不同透明度的效果)
-        cxt.fillStyle = 'rgba(0,0,0,.1)';
-        cxt.fillRect(0, 0, clinetW, clinetH);
+    // rain drop drop drop ~ ~ ~, a famous song by zhangyu (https://music.163.com/#/song?id=190495&market=baiduqk), try listen
+    drop() {
+        let rainCanvas = document.querySelector('#rain');
 
-        // 设置字体颜色
-        cxt.fillStyle = '#00ff00';
-        for (var i = 0; i < down.length; i++) {
-            var randomNum = Math.random();
-            // 绘制文字
-            cxt.fillText(arr[Math.floor(randomNum * arr.length)], i * fontSize, down[i] * fontSize);
-
-            if (down[i] * fontSize > clinetH && randomNum > 0.9) {
-                down[i] = 0;
-            }
-
-            down[i]++;
+        if (!rainCanvas) {
+            rainCanvas = document.createElement('canvas');
+            rainCanvas.id = 'rain';
+            rainCanvas.width = this.container.clientWidth; // style.width not work, please pay attention
+            rainCanvas.height = this.container.clientHeight; // also
+            this.container.appendChild(rainCanvas);
         }
+
+        const cxt = rainCanvas.getContext('2d');
+        this.draw(cxt);
     }
-    var speed = speed || 30;
-    setInterval(drawRain, speed);
+
+    // ok let we draw down~down animate
+    draw(cxt) {
+        clearInterval(this.inter);
+
+        const { docEl, fontSize, rainStr } = this;
+        const { clientWidth, clientHeight } = docEl;
+
+        const arr = rainStr.split('');
+
+        // | | | | | | | | | | | | , compute cols
+        const cols = Math.floor(clientWidth / fontSize);
+        // random start position every col
+        const down = [];
+        for (let i = 0; i < cols; i++) {
+            down.push(Math.floor(Math.random() * -100));
+        }
+
+        this.inter = setInterval(() => {
+            // set background
+            cxt.fillStyle = 'rgba(0, 0, 0, .3)';
+            cxt.fillRect(0, 0, clientWidth, clientHeight);
+
+            // set amazing green
+            cxt.fillStyle = '#00ff00';
+
+            for (var i = 0; i < down.length; i++) {
+                var randomNum = Math.random();
+                // draw text
+                cxt.fillText(arr[Math.floor(randomNum * arr.length)], i * fontSize, down[i] * fontSize);
+
+                // if out screen, go back to initial position
+                if (down[i] * fontSize > clientHeight && randomNum > 0.9) {
+                    down[i] = 0;
+                }
+
+                // down ~ down
+                down[i]++;
+            }
+        }, this.speed);
+    }
+
 }
 
-var content = document.querySelector('.content');
-var canvas = document.createElement('canvas');
-canvas.style.width = '100%';
-canvas.style.height = content.clientHeight;
-content.appendChild(canvas);
-var text = '富强 民主 文明 和谐 自由 平等 公正 法治 爱国 敬业 诚信 友善';
-rain(canvas, text, '', 30);
+// new rain
+new rain({
+    container: document.querySelector('.content'),
+    rainStr,
+    fontSize: 14,
+    speed: 30
+}).drop();
