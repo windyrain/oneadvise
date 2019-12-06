@@ -8,6 +8,8 @@
 
 English | [简体中文](./README-zh_CN.md)
 
-Features：（2019.12.05 update）
+Features：（2019.12.06 update）
 
 * no feature, only ui
+* The Matrix（2019.12.05 ./plugins/rain.js）
+* Blackhole inspired by baidu（2019.12.06 ./plugins/blackhole.js）
