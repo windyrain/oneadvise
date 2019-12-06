@@ -134,7 +134,7 @@ setTimeout(() => {
     new Blackhole({
         animation, 
         url, 
-        maxScale: 1,
+        maxScale: document.documentElement.clientWidth < 800 ? 3 : 1,
         // blackhole start rotate
         onStart: () => {
             // I don't know why 2500, but exactly good

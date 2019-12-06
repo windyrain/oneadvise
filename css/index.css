@@ -6,6 +6,7 @@ html, body {
 .container {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .fcsc {
@@ -22,10 +23,10 @@ html, body {
 .logo {
     display: inline-block;
     width: 500px;
-    max-width: 80%;
+    max-width: 100%;
     height: 100px;
-    background: url('../assets/logo.png') center center;
-    background-size: cover;
+    background: url('../assets/logo.png') center center no-repeat;
+    background-size: contain;
     margin-bottom: 12px;
 }
 
