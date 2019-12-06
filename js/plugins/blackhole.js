@@ -5,11 +5,11 @@
  */
 
 // wow, $10000 dollar
-animation = '15s linear 0s infinite normal running rotates';
+const animation = '15s linear 0s infinite normal running rotates';
 
 // pic from baidu, when you search blackhole in chinese(黑洞)
 // http://s1.bdstatic.com/r/www/cache/yunying/blackhole/img/blackhole2019_pc.png
-url = './assets/blackhole.png'
+const url = './assets/blackhole.png'
 
 // yes, I'm cute here
 class Blackhole {
@@ -71,7 +71,7 @@ class Blackhole {
         this.inter = setInterval(() => {
             // more and more faster
             let step = (ele.clientWidth + 1200) / 100;
-
+            
             // stop it
             if (maxMe - ele.clientWidth - step < 0) {
                 ele.style.width = px(maxMe);
@@ -127,7 +127,9 @@ class Blackhole {
     }
 
     // px
-    px = (number) => `${number}px`
+    px(number) {
+        return `${number}px`;
+    }
 }
 
 setTimeout(() => {
@@ -148,4 +150,4 @@ setTimeout(() => {
             }, 2500);
         }
     }).suction();
-}, 5000);
+}, 3000);
