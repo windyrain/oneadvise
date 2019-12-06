@@ -12,4 +12,4 @@
 
 * 对，没有功能
 * 黑客帝国效果（2019.12.05 ./plugins/rain.js）
-* 受百度启发的黑洞效果（2019.12.06 ./plugins/blackhole.js）
+* 受百度启发的黑洞效果（2019.12.06 ./plugins/blackhole.js）
