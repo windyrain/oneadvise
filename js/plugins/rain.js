@@ -1,12 +1,12 @@
 /**
- * rain (From The Matrix 黑客帝国)
+ * Rain (From The Matrix 黑客帝国)
  * @author fengyu
  */
 // Prosperity, democracy, civilization, harmony, freedom, equality, justice, rule of law, patriotism, dedication, integrity and friendship
 // this is socialist core values in china
 const rainStr = '富强 民主 文明 和谐 自由 平等 公正 法治 爱国 敬业 诚信 友善';
 
-class rain {
+class Rain {
 
     constructor(config) {
         const { container, rainStr, fontSize, speed } = config;
@@ -26,6 +26,8 @@ class rain {
             rainCanvas.id = 'rain';
             rainCanvas.width = this.container.clientWidth; // style.width not work, please pay attention
             rainCanvas.height = this.container.clientHeight; // also
+            rainCanvas.style.width = this.container.clientWidth; // style.width not work, please pay attention
+            rainCanvas.style.height = this.container.clientHeight; // style.width not work, please pay attention
             this.container.appendChild(rainCanvas);
         }
 
@@ -51,6 +53,11 @@ class rain {
         }
 
         this.inter = setInterval(() => {
+            // when rain is not show, clear this.inter
+            if (document.querySelector('#rain').style.width === '0px') {
+                clearInterval(this.inter);
+            }
+
             // set background
             cxt.fillStyle = 'rgba(0, 0, 0, .3)';
             cxt.fillRect(0, 0, clientWidth, clientHeight);
@@ -76,8 +83,8 @@ class rain {
 
 }
 
-// new rain
-new rain({
+// new Rain
+new Rain({
     container: document.querySelector('.content'),
     rainStr,
     fontSize: 14,
