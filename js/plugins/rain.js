@@ -26,8 +26,10 @@ class Rain {
             rainCanvas.id = 'rain';
             rainCanvas.width = this.container.clientWidth; // style.width not work, please pay attention
             rainCanvas.height = this.container.clientHeight; // also
-            rainCanvas.style.width = this.container.clientWidth; // style.width not work, please pay attention
-            rainCanvas.style.height = this.container.clientHeight; // style.width not work, please pay attention
+            rainCanvas.style.width = this.px(this.container.clientWidth); // use for css transition
+            rainCanvas.style.height = this.px(this.container.clientHeight); // use for css transition
+            rainCanvas.style.marginLeft = this.px(-this.container.clientWidth / 2); // use for css transition
+            rainCanvas.style.marginTop = this.px((-this.container.clientHeight + 112) / 2); // use for css transition
             this.container.appendChild(rainCanvas);
         }
 
@@ -54,12 +56,13 @@ class Rain {
 
         this.inter = setInterval(() => {
             // when rain is not show, clear this.inter
-            if (document.querySelector('#rain').style.width === '0px') {
+            if (document.querySelector('#rain').clientWidth === 0) {
                 clearInterval(this.inter);
+                document.querySelector('#rain').style.display = 'none';
             }
 
             // set background
-            cxt.fillStyle = 'rgba(0, 0, 0, .3)';
+            cxt.fillStyle = 'rgba(0, 0, 0, .1)';
             cxt.fillRect(0, 0, clientWidth, clientHeight);
 
             // set amazing green
@@ -81,6 +84,10 @@ class Rain {
         }, this.speed);
     }
 
+    // px
+    px(number) {
+        return `${number}px`;
+    }
 }
 
 // new Rain

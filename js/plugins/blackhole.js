@@ -83,7 +83,7 @@ class Blackhole {
                     clearInterval(this.inter);
                     // too bigger to be none (物极必反 in chinese)
                     this.tweenNone(ele, maxMe);
-                }, 500);
+                }, 1000);
 
                 return;
             }
@@ -136,18 +136,20 @@ setTimeout(() => {
     new Blackhole({
         animation, 
         url, 
-        maxScale: document.documentElement.clientWidth < 800 ? 3 : 1,
+        maxScale: document.documentElement.clientWidth < 800 ? 2.5 : 1,
         // blackhole start rotate
         onStart: () => {
             // I don't know why 2500, but exactly good
             setTimeout(() => {
-                document.querySelector('#rain').className = 'transparent';
+                const rain = document.getElementById('rain');
+
+                rain.className = 'transparent';
 
                 // yeah, brother welcome to my website
                 setTimeout(() => {
                     document.querySelector('.welcome').style.display = 'block';
                 });
-            }, 2500);
+            }, 2000);
         }
     }).suction();
 }, 3000);

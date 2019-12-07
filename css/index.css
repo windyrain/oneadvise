@@ -52,17 +52,24 @@ html, body {
  * rain style , rain will sucation by blackhole
  */
 #rain {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: block;
-    margin: auto;
     opacity: 1;
-    transition: opacity 10s linear 0s, width 3s linear 0s;
-    z-index: 888;
+    transition: opacity 10s linear 0s, width 2s linear 0s, height 2s linear 0s, margin-left 2s linear 0s, margin-top 2s linear 0s;
+    z-index: 233;
+    background: transparent;
 }
 
 .transparent {
-    animation: 5s linear 0s infinite normal running rotates;
+    animation: 3s linear 0s infinite normal running rotates;
     width: 0px !important;
-    opacity: 0.5 !important;
+    height: 0px !important;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+    opacity: 0 !important;
+    z-index: 888 !important;
 }
 
 /**
