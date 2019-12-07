@@ -60,7 +60,7 @@ html, body {
 }
 
 .transparent {
-    animation: 15s linear 0s infinite normal running rotates;
+    animation: 5s linear 0s infinite normal running rotates;
     width: 0px !important;
     opacity: 0.5 !important;
 }
