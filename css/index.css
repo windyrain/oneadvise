@@ -35,17 +35,7 @@ html, body {
     flex: 1;
     justify-content: center;
     align-items: center;
-}
-
-.welcome {
-    position: fixed;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: 50px;
-    top: 50%;
-    margin-top: -21px;
-    display: none;
+    overflow: hidden;
 }
 
 /**
@@ -83,4 +73,43 @@ html, body {
     100% {
         transform: rotate(360deg);
     }
+}
+
+/**
+ * chat
+ */
+ .chat-container {
+     display: flex;
+     position: relative;
+     width: 750px;
+     max-width: 80%;
+     height: 100%;
+     margin: 0 auto;
+     justify-content: center;
+ }
+
+ .welcome {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -40px;
+    display: none;
+    padding: 6px;
+}
+
+.welcome-message {
+    position: absolute;
+    text-align: left;
+    margin-top: 0;
+    margin-left: 0;
+    top: 0;
+    left: 0;
+    font-size: 18px;
+    transition: top 1s ease 0s, left 1s linear 0s, font-size 1s linear 0s, margin-top 1s linear 0s;
+    padding: 6px;
 }

@@ -23,6 +23,7 @@ class Blackhole {
         this.url = url;
         this.maxScale = maxScale;
         this.onStart = config.onStart;
+        this.onEnd = config.onEnd;
     }
 
     // first time know suction (吸)
@@ -115,6 +116,7 @@ class Blackhole {
                 ele.style.top = px(docEl.clientHeight / 2);
                 ele.style.display = 'none';
                 clearInterval(this.inter);
+                this.onEnd();
             }
 
             // set style
@@ -150,6 +152,11 @@ setTimeout(() => {
                     document.querySelector('.welcome').style.display = 'block';
                 });
             }, 2000);
+        },
+        onEnd: () => {
+            setTimeout(() => {
+                document.querySelector('.welcome').classList.add('welcome-message');
+            }, 500);
         }
     }).suction();
 }, 3000);
