@@ -1,3 +1,9 @@
+if (!window.requestIdleCallback) {
+  window.requestIdleCallback = ((func) => {
+    setTimeout(func, 500);
+  })
+}
+
 requestIdleCallback(function () {
   Fingerprint2.get(function (components) {
     const hash = Fingerprint2.x64hash128(components.map(({ value }) => value).join(''),31);
