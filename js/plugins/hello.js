@@ -17,7 +17,7 @@ requestIdleCallback(function () {
           })
         } else {
           if (result && result[0] && result[0].name) {
-            alert(`是你吗，${result[0].name}`);
+            alert(`是你吗，${result[0].name}${result[0].tag ? `，My ${result[0].tag}！` : '。'}`);
           }
         }
       });
