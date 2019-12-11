@@ -113,3 +113,25 @@ html, body {
     transition: top 1s ease 0s, left 1s linear 0s, font-size 1s linear 0s, margin-top 1s linear 0s;
     padding: 6px;
 }
+
+.premessage-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 42px;
+}
+
+.premessage-item {
+    width: 100%;
+    min-height: 42px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 2s ease 0s;
+    padding: 0 6px;
+}
+
+.full-opacity {
+    opacity: 1 !important;
+}

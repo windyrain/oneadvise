@@ -156,6 +156,11 @@ setTimeout(() => {
         onEnd: () => {
             setTimeout(() => {
                 document.querySelector('.welcome').classList.add('welcome-message');
+
+                setTimeout(() => {
+                    Chat.initPreMessages();
+                    Chat.showPreMessages();
+                }, 1300);
             }, 500);
         }
     }).suction();
