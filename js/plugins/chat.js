@@ -1,12 +1,11 @@
 (function(global) {
 
-  class Chat {
+  const Chat = {
+    mIndex: 0,
 
-    static mIndex = 0;
+    preMessages: [], 
 
-    static preMessages = []; 
-
-    static initPreMessages() {
+    initPreMessages: () => {
       const container = document.querySelector('.premessage-wrapper');
 
       for (let i = 0, l = Chat.preMessages.length; i < l; i++) {
@@ -15,9 +14,9 @@
         item.innerHTML = Chat.preMessages[i];
         container.appendChild(item);
       }
-    }
+    },
 
-    static showPreMessages() {
+    showPreMessages: () => {
       const messages = document.querySelectorAll('.premessage-item');
 
       setTimeout(() => {
@@ -29,7 +28,6 @@
         }
       }, 1000);
     }
-
   }
 
   global.Chat = Chat;
