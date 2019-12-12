@@ -4,7 +4,7 @@ const LANG_MAP = {
     welcome: 'Here we go!'
   },
   zh: {
-    welcome: '来了，老弟'
+    welcome: '欢迎光临！'
   }
 }
 
