@@ -28,6 +28,7 @@ html, body {
     background: url('../assets/logo.png') center center no-repeat;
     background-size: contain;
     margin-bottom: 12px;
+    filter: sepia(100%);
 }
 
 .content {
@@ -50,6 +51,7 @@ html, body {
     transition: opacity 10s linear 0s, width 2s linear 0s, height 2s linear 0s, margin-left 2s linear 0s, margin-top 2s linear 0s;
     z-index: 233;
     background: transparent;
+    filter: sepia(100%);
 }
 
 .transparent {
