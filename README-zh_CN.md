@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://www.oneadvise.cn">
-    <img width="500" src="./assets/logo.png">
+    <img width="500" src="./assets/logo.png" style="filter:sepia(100%)">
   </a>
 </p>
 
