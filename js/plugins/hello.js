@@ -24,7 +24,9 @@ requestIdleCallback(function () {
             body: JSON.stringify({
               fingerprint: hash
             })
-          })
+          });
+
+          Chat.preMessages.push(`欢迎你，我的新朋友，我叫封宇，是这个网站的建设者，很高兴认识你！`)
         } else {
           if (result && result[0] && result[0].name) {
             let call = '';
@@ -69,7 +71,7 @@ requestIdleCallback(function () {
 
             document.querySelector('.welcome').innerHTML = `欢迎光临，${call}！`;
           } else {
-            Chat.preMessages.push(`欢迎你，我的新朋友，我叫封宇，是这个网站的建设者，很高兴认识你！`)
+            Chat.preMessages.push(`欢迎你，我的新朋友，我叫封宇，是这个网站的建设者，很高兴认识你！`);
           }
         }
       });
