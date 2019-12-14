@@ -5,9 +5,9 @@ if (!window.requestIdleCallback) {
 }
 
 requestIdleCallback(function () {
-  // if (location.protocol === 'file:') {
-  //   return;
-  // }
+  if (location.protocol === 'file:') {
+    return;
+  }
 
   Fingerprint2.get(function (components) {
     const hash = Fingerprint2.x64hash128(components.map(({ value }) => value).join(''),31);
