@@ -134,34 +134,47 @@ class Blackhole {
     }
 }
 
-setTimeout(() => {
-    new Blackhole({
-        animation, 
-        url, 
-        maxScale: document.documentElement.clientWidth < 800 ? 2.5 : 1,
-        // blackhole start rotate
-        onStart: () => {
-            // I don't know why 2500, but exactly good
-            setTimeout(() => {
-                const rain = document.getElementById('rain');
-
-                rain.className = 'transparent';
-
-                // yeah, brother welcome to my website
+if (location.protocol === 'file:') {
+    // jump begin animation, though it beautiful, but i see too many time
+    const rain = document.getElementById('rain');
+    const welcome = document.querySelector('.welcome');
+    
+    rain.className = 'transparent';
+    welcome.style.display = 'block';
+    welcome.classList.add('welcome-message');
+    Chat.preMessages.push('开发者大大，你好！');
+    Chat.initPreMessages();
+    Chat.showPreMessages();
+} else {
+    setTimeout(() => {
+        new Blackhole({
+            animation, 
+            url, 
+            maxScale: document.documentElement.clientWidth < 800 ? 2.5 : 1,
+            // blackhole start rotate
+            onStart: () => {
+                // I don't know why 2500, but exactly good
                 setTimeout(() => {
-                    document.querySelector('.welcome').style.display = 'block';
-                });
-            }, 2000);
-        },
-        onEnd: () => {
-            setTimeout(() => {
-                document.querySelector('.welcome').classList.add('welcome-message');
-
+                    const rain = document.getElementById('rain');
+    
+                    rain.className = 'transparent';
+    
+                    // yeah, brother welcome to my website
+                    setTimeout(() => {
+                        document.querySelector('.welcome').style.display = 'block';
+                    });
+                }, 2000);
+            },
+            onEnd: () => {
                 setTimeout(() => {
-                    Chat.initPreMessages();
-                    Chat.showPreMessages();
-                }, 1300);
-            }, 500);
-        }
-    }).suction();
-}, 3000);
+                    document.querySelector('.welcome').classList.add('welcome-message');
+    
+                    setTimeout(() => {
+                        Chat.initPreMessages();
+                        Chat.showPreMessages();
+                    }, 1300);
+                }, 500);
+            }
+        }).suction();
+    }, 3000);
+}
