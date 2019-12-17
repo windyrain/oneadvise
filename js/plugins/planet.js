@@ -23,7 +23,7 @@
   //把相机添加到场景里面
   scene.add(camera);
 
-  camera.position.z = 250;
+  camera.position.z = 260;
 
   renderer.setSize(width, height);
 
