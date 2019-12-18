@@ -3,22 +3,22 @@
   const container = document.querySelector('.planet-container');
 
   //设置场景的大小
-  var width = container.clientWidth;
-  var height = container.clientHeight;
+  const width = container.clientWidth;
+  const height = container.clientHeight;
 
   //设置相机的一些参数。
-  var view_angle = 45;
+  const view_angle = 45;
   aspect = width / height;
   near = 0.1;
   far = 10000;
 
   //新建一个WebGL 渲染，以及相机
-  var renderer = new THREE.WebGLRenderer();
-  var camera =
+  const renderer = new THREE.WebGLRenderer();
+  const camera =
     new THREE.PerspectiveCamera(
       view_angle, aspect, near, far
     );
-  var scene = new THREE.Scene();
+  const scene = new THREE.Scene();
 
   //把相机添加到场景里面
   scene.add(camera);
@@ -31,24 +31,36 @@
   container.append(renderer.domElement);
 
   //设置球体的值
-  var radius = 100, segemnt = 16, rings = 16;
+  const radius = 100, segemnt = 16, rings = 16;
 
-  var sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x542e82 });
+  const loader = new THREE.TextureLoader();
+  let mesh;
+  loader.load('assets/earth_atmos_2048.jpg', function ( texture ) {
 
-  var sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(radius, segemnt, rings),
-    sphereMaterial
-  );
+      const geometry = new THREE.SphereGeometry(radius, segemnt, rings);
 
-  sphere.geometry.verticesNeedUpdate = true;
-  sphere.geometry.normalsNeedUpdate = true;
+      const material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+      mesh = new THREE.Mesh( geometry, material );
 
-  scene.add(sphere);
+      scene.add(mesh);
+  } );
 
-  var spotLight = new THREE.SpotLight( 0xffffff );
-      spotLight.position.set( 10, 50, 200 );
+  const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x542e82 });
 
-  var pointLight = new THREE.PointLight(0Xffffff);
+  // const sphere = new THREE.Mesh(
+  //   new THREE.SphereGeometry(radius, segemnt, rings),
+  //   sphereMaterial
+  // );
+
+  // sphere.geometry.verticesNeedUpdate = true;
+  // sphere.geometry.normalsNeedUpdate = true;
+
+  // scene.add(sphere);
+
+  const spotLight = new THREE.SpotLight(0xffffff);
+  spotLight.position.set(10, 50, 200);
+
+  const pointLight = new THREE.PointLight(0Xffffff);
 
   pointLight.position.x = 10;
   pointLight.position.y = 50;
@@ -56,15 +68,15 @@
 
   scene.add(spotLight);
 
-  var animate = function () {
-    requestAnimationFrame( animate );
+  const animate = function () {
+    requestAnimationFrame(animate);
 
-    // sphere.rotation.x += 0.01;
-    sphere.rotation.y += 0.01;
+    if (mesh) mesh.rotation.y += 0.01;
 
-    renderer.render( scene, camera );
+    renderer.render(scene, camera);
   };
 
   animate();
+
 
 })(window);
