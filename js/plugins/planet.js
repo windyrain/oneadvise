@@ -35,7 +35,7 @@
 
   const loader = new THREE.TextureLoader();
   let mesh;
-  loader.load('assets/earth_atmos_2048.jpg', function ( texture ) {
+  loader.load('assets/2k_mars.jpg', function ( texture ) {
 
       const geometry = new THREE.SphereGeometry(radius, segemnt, rings);
 
@@ -45,7 +45,7 @@
       scene.add(mesh);
   } );
 
-  const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x542e82 });
+  // const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x542e82 });
 
   // const sphere = new THREE.Mesh(
   //   new THREE.SphereGeometry(radius, segemnt, rings),
