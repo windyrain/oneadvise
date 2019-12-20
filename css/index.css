@@ -140,6 +140,7 @@ html, body {
 }
 
 .planet-container {
+    margin-top: 20px;
     width: 100%;
     height: 50%;
 }
