@@ -1,5 +1,7 @@
 (function (global) {
 
+  let isRotate = true;
+
   const container = document.querySelector('.planet-container');
 
   //设置场景的大小
@@ -71,12 +73,15 @@
   const animate = function () {
     requestAnimationFrame(animate);
 
-    if (mesh) mesh.rotation.y += 0.01;
+    if (mesh && isRotate) mesh.rotation.y += 0.01;
 
     renderer.render(scene, camera);
   };
 
   animate();
 
+  document.querySelector('.planet-container > canvas').addEventListener('click', () => {
+    isRotate = !isRotate;
+  });
 
 })(window);
