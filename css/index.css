@@ -150,7 +150,7 @@ html, body {
     height: 100%;
 }
 
-.effect-9{background: #000; font-size: 30px; border: none; outline: none; padding: 17px 50px 19px; transition: 0.4s; color: #fff; width:310px}
+.effect-9{text-align: center; background: #000; font-size: 30px; border: none; outline: none; padding: 17px 50px 19px; transition: 0.4s; color: #fff; width:310px}
 .effect-9 ~ .focus-border:before,
 .effect-9 ~ .focus-border:after{content: ""; position: absolute; top: 0; right: 0; width: 0; height: 2px; background-color: #FFCC99; transition: 0.2s; transition-delay: 0.2s;}
 .effect-9 ~ .focus-border:after{top: auto; bottom: 0; right: auto; left: 0; transition-delay: 0.6s;}
