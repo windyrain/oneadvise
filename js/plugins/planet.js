@@ -83,5 +83,9 @@
   document.querySelector('.planet-container > canvas').addEventListener('click', () => {
     isRotate = !isRotate;
   });
-
+  
+  new LeaderLine(
+    document.querySelector('.planet-container > canvas'),
+    document.getElementById('thing1')
+  );
 })(window);
