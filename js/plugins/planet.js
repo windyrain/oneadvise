@@ -93,4 +93,9 @@
     document.querySelector('.planet-container > canvas'),
     document.getElementById('thing2')
   );
+
+  new LeaderLine(
+    document.querySelector('.planet-container > canvas'),
+    document.getElementById('thing3')
+  );
 })(window);
